@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "screener-analysis"
+version = "0.1.0"
+description = ""
+authors = ["Prabakaran Santhanam <praba230890@gmail.com>"]
+readme = "readme.md"
+packages = [{include = "screener_analysis"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pytest = "^7.1.1"
+requests = "^2.27.1"
+click = "^8.0.4"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
