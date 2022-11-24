@@ -43,21 +43,22 @@ def get_fundamentals(company) -> List[dict]:
     #         shareholding = tbl.xpath('.//tr/td//text()')
     #     ind += 1
 
-    warehouse_id = root.xpath("/html/body/main/div[1]/@data-warehouse-id")[0]
-    market_cap = root.xpath("/html/body/main/div[2]/div[3]/div[2]/ul/li[1]/span[2]/span/text()")[0]
+    warehouse_id = root.xpath("/html/body/main/div[2]/@data-warehouse-id")[0]
+    market_cap = root.xpath("/html/body/main/div[3]/div[3]/div[2]/ul/li[1]/span[2]/span/text()")[0]
+    print(f"{root}")
     print(f"{warehouse_id} {market_cap}")
     fundamentals = {
         "company": company["name"],
         "market_cap": market_cap,
-        "current_price": root.xpath("/html/body/main/div[2]/div[3]/div[2]/ul/li[2]/span[2]/span/text()")[0],
-        "high": root.xpath("/html/body/main/div[2]/div[3]/div[2]/ul/li[3]/span[2]/span[1]/text()")[0],
-        "low": root.xpath("/html/body/main/div[2]/div[3]/div[2]/ul/li[3]/span[2]/span[2]/text()")[0],
-        "P/E": root.xpath("/html/body/main/div[2]/div[3]/div[2]/ul/li[4]/span[2]/span/text()")[0] if root.xpath("/html/body/main/div[2]/div[3]/div[2]/ul/li[4]/span[2]/span/text()") else "N/A",
-        "Book Value": root.xpath("/html/body/main/div[2]/div[3]/div[2]/ul/li[5]/span[2]/span/text()")[0],
-        "Divident Yield": root.xpath("/html/body/main/div[2]/div[3]/div[2]/ul/li[6]/span[2]/span/text()")[0] if root.xpath("/html/body/main/div[2]/div[3]/div[2]/ul/li[6]/span[2]/span/text()") else "N/A",
-        "ROCE": root.xpath("/html/body/main/div[2]/div[3]/div[2]/ul/li[7]/span[2]/span/text()")[0] if len(root.xpath("/html/body/main/div[2]/div[3]/div[2]/ul/li[7]/span[2]/span/text()")) > 0 else "N/A",
-        "ROE": root.xpath("/html/body/main/div[2]/div[3]/div[2]/ul/li[8]/span[2]/span/text()")[0] if len(root.xpath("/html/body/main/div[2]/div[3]/div[2]/ul/li[8]/span[2]/span/text()")) > 0 else "N/A",
-        "Face Value": root.xpath("/html/body/main/div[2]/div[3]/div[2]/ul/li[9]/span[2]/span/text()")[0],
+        "current_price": root.xpath("/html/body/main/div[3]/div[3]/div[2]/ul/li[2]/span[2]/span/text()")[0],
+        "high": root.xpath("/html/body/main/div[3]/div[3]/div[2]/ul/li[3]/span[2]/span[1]/text()")[0],
+        "low": root.xpath("/html/body/main/div[3]/div[3]/div[2]/ul/li[3]/span[2]/span[2]/text()")[0],
+        "P/E": root.xpath("/html/body/main/div[3]/div[3]/div[2]/ul/li[4]/span[2]/span/text()")[0] if root.xpath("/html/body/main/div[3]/div[3]/div[2]/ul/li[4]/span[2]/span/text()") else "N/A",
+        "Book Value": root.xpath("/html/body/main/div[3]/div[3]/div[2]/ul/li[5]/span[2]/span/text()")[0],
+        "Divident Yield": root.xpath("/html/body/main/div[3]/div[3]/div[2]/ul/li[6]/span[2]/span/text()")[0] if root.xpath("/html/body/main/div[3]/div[3]/div[2]/ul/li[6]/span[2]/span/text()") else "N/A",
+        "ROCE": root.xpath("/html/body/main/div[3]/div[3]/div[2]/ul/li[7]/span[2]/span/text()")[0] if len(root.xpath("/html/body/main/div[3]/div[3]/div[2]/ul/li[7]/span[2]/span/text()")) > 0 else "N/A",
+        "ROE": root.xpath("/html/body/main/div[3]/div[3]/div[2]/ul/li[8]/span[2]/span/text()")[0] if len(root.xpath("/html/body/main/div[3]/div[3]/div[2]/ul/li[8]/span[2]/span/text()")) > 0 else "N/A",
+        "Face Value": root.xpath("/html/body/main/div[3]/div[3]/div[2]/ul/li[9]/span[2]/span/text()")[0],
     }
     dataset = get_dataset(company["id"])
     return {
